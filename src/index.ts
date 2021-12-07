@@ -1,7 +1,7 @@
 import express from 'express';
 import routes from './Routes/Routes';
 import 'reflect-metadata';
-//import './Database/connect.ts';
+// import './Database/connect.ts';
 
 const app = express();
 
