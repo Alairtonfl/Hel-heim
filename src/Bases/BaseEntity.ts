@@ -1,10 +1,10 @@
-import { Column, Entity } from "typeorm";
+import { CreateDateColumn, DeleteDateColumn, Entity, UpdateDateColumn } from "typeorm";
 @Entity('users')
 export class BaseEntity {
-    @Column('date')
+    @CreateDateColumn()
     created_at: Date;
-    @Column('date')
+    @UpdateDateColumn()
     updated_at: Date;
-    @Column('date')
+    @DeleteDateColumn()
     deleted_at: Date;
 }

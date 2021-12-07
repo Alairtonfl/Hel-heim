@@ -11,6 +11,38 @@ export class CreateUsersTable1638811399812 implements MigrationInterface {
           isPrimary: true,
           generationStrategy: 'increment',
         },
+        {
+          name: 'name',
+          type: 'varchar'
+        },
+        {
+          name: 'password',
+          type: 'varchar'
+        },
+        {
+          name: 'avatar',
+          type: 'varchar'
+        },
+        {
+          name: 'email',
+          type: 'varchar',
+          isUnique: true
+        },
+        {
+          name: 'created_at',
+          type: 'timestamp',
+          default: 'now()'
+        },
+        {
+          name: 'updated_at',
+          type: 'timestamp',
+          default: 'now()'
+        },
+        {
+          name: 'deleted_at',
+          type: 'timestamp',
+          default: null
+        }
       ],
     }));
   }
