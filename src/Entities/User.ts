@@ -1,8 +1,9 @@
 import { BaseEntity } from '@Bases/BaseEntity';
 import {
-  Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate,
+  Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, OneToOne, JoinColumn,
 } from 'typeorm';
 import bcrypt from 'bcrypt';
+import { UserStats } from './UserStats';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -20,6 +21,10 @@ export class User extends BaseEntity {
 
     @Column('text')
       avatar: string;
+
+    @OneToOne(() => UserStats)
+    @JoinColumn()
+      stats: UserStats;
 
     @BeforeInsert()
     @BeforeUpdate()

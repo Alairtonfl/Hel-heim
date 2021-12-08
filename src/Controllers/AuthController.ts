@@ -3,7 +3,7 @@ import UserRepository from '@Repository/UserRepository';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-class AuthController {
+export default new class AuthController {
   async authenticate(req: Request, res: Response) {
     const { email, password } = req.body;
 
@@ -26,4 +26,4 @@ class AuthController {
       token,
     });
   }
-}
+}();
