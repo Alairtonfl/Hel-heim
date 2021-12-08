@@ -3,37 +3,58 @@ import { User } from '@Entities/User';
 import { getRepository } from 'typeorm';
 
 export default new class UserRepository implements BaseRepository<User> {
-  async findById(id: Number, entity: any): Promise<User> {
+  async findById(id: number): Promise<User> {
     try {
-      // const repository = getRepository(entity);
-      // const model: any = await repository.findOne(id);
-      const model = await new User();
-      model.id = '50';
+      const repository = getRepository(User);
+      const model: User = await repository.findOne(id);
       return model;
     } catch (e) {
       throw new Error(`Error: ${e}`);
     }
   }
 
-  findAll(entity: any): Promise<User> {
-    throw new Error('Method not implemented.');
-  }
-
-  create(entity: any): Promise<User> {
+  async findAll(): Promise<Promise<User>[]> {
     try {
-      const repository = getRepository(entity);
-      const model = repository.save(entity);
+      const repository = getRepository(User);
+      const model: any = await repository.find();
       return model;
     } catch (e) {
       throw new Error(`Error: ${e}`);
     }
   }
 
-  update(id: Number, entity: any): Promise<User> {
-    throw new Error('Method not implemented.');
+  async create(entity: User): Promise<User> {
+    try {
+      const repository = getRepository(User);
+      const model: User = await repository.save(entity);
+      return model;
+    } catch (e) {
+      throw new Error(`Error: ${e}`);
+    }
   }
 
-  delete(id: Number, entity: any): Promise<User> {
-    throw new Error('Method not implemented.');
+  async update(id: number, entity: User): Promise<User> {
+    try {
+      const repository = getRepository(User);
+      const update: User = await repository.findOne(id);
+      update.avatar = entity.avatar;
+      update.email = entity.email;
+      update.name = entity.name;
+      const model = await repository.save(update);
+      return model;
+    } catch (e) {
+      throw new Error(`Error: ${e}`);
+    }
+  }
+
+  async delete(id: number): Promise<User> {
+    try {
+      const repository = getRepository(User);
+      const deleted: User = await repository.findOne(id);
+      repository.remove(deleted);
+      return deleted;
+    } catch (e) {
+      throw new Error(`Error: ${e}`);
+    }
   }
 }();
