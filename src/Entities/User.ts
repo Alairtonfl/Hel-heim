@@ -8,7 +8,7 @@ import { UserStats } from './UserStats';
 @Entity('users')
 export class User extends BaseEntity {
     @PrimaryGeneratedColumn('increment')
-      id: string;
+      id: number;
 
     @Column('text')
       email: string;
