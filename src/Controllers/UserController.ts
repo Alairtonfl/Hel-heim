@@ -6,7 +6,8 @@ import { Request, Response } from 'express';
 export default new class UserController implements BaseController<User> {
   async findById(req: Request, res: Response) {
     try {
-      const user = await UserRepository.findById(1);
+      const { id } = req.body;
+      const user = await UserRepository.findById(id);
       return res.send(user);
     } catch (e) {
       return res.send(e).status(400);

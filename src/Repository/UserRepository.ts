@@ -13,6 +13,16 @@ export default new class UserRepository implements BaseRepository<User> {
     }
   }
 
+  async findByEmail(email: string): Promise<User> {
+    try {
+      const repository = getRepository(User);
+      const model: User = await repository.findOne({ where: { email } });
+      return model;
+    } catch (e) {
+      throw new Error(`Error: ${e}`);
+    }
+  }
+
   async findAll(): Promise<Promise<User>[]> {
     try {
       const repository = getRepository(User);
