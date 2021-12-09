@@ -58,6 +58,7 @@ export class CreateStatsTable1638985392468 implements MigrationInterface {
         {
           name: 'deleted_at',
           type: 'timestamp',
+          isNullable: true,
           default: null,
         },
       ],
@@ -68,12 +69,13 @@ export class CreateStatsTable1638985392468 implements MigrationInterface {
         columnNames: ['user_id'],
         referencedTableName: 'users',
         referencedColumnNames: ['id'],
+        onDelete: "CASCADE"
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('user_stats', 'user_id');
+    //await queryRunner.dropForeignKey('user_stats', 'user_id');
     await queryRunner.dropTable('user_stats');
   }
 }

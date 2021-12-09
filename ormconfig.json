@@ -1,21 +1,22 @@
 {
     "type": "postgres",
     "host": "localhost",
-    "port": 3306,
-    "username": "test",
-    "password": "test",
-    "database": "test",
+    "port": 5432,
+    "username": "postgres",
+    "password": "pass",
+    "database": "helheim",
     "logging": false,
     "entities": [
-        "src/entities/*.ts"
+        "src/Entities/*.ts"
     ],
     "migrations": [
-        "src/database/migration/*.ts"
+        "dist/Database/Migration/*.js"
     ],
     "subscribers": [
         "src/subscriber/*.ts"
     ],
     "cli": {
-        "migrationsDir": "src/database/migration"
+        "migrationsDir": "src/Database/Migration",
+        "entitiesDir": "src/Entities"
     }
 }

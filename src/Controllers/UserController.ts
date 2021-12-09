@@ -1,12 +1,12 @@
 import { BaseController } from '@Bases/BaseController';
-import { User } from '@Entities/User';
+import User from '@Entities/User';
 import UserRepository from '@Repository/UserRepository';
 import { Request, Response } from 'express';
 
 export default new class UserController implements BaseController<User> {
   async findById(req: Request, res: Response) {
     try {
-      const { id } = req.body;
+      const { id } = req.params;
       const user = await UserRepository.findById(id);
       return res.send(user);
     } catch (e) {

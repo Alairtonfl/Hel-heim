@@ -5,8 +5,8 @@ import {
 import bcrypt from 'bcrypt';
 import { UserStats } from './UserStats';
 
-@Entity('users')
-export class User extends BaseEntity {
+@Entity("users")
+export default class User extends BaseEntity {
     @PrimaryGeneratedColumn('increment')
       id: number;
 
@@ -22,9 +22,9 @@ export class User extends BaseEntity {
     @Column('text')
       avatar: string;
 
-    @OneToOne(() => UserStats)
-    @JoinColumn()
-      stats: UserStats;
+    // @OneToOne(() => UserStats)
+    // @JoinColumn()
+    //   user_id: UserStats;
 
     @BeforeInsert()
     @BeforeUpdate()

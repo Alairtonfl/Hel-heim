@@ -1,9 +1,9 @@
 import { BaseRepository } from '@Bases/BaseRepository';
-import { User } from '@Entities/User';
+import User from '@Entities/User';
 import { getRepository } from 'typeorm';
 
 export default new class UserRepository implements BaseRepository<User> {
-  async findById(id: number): Promise<User> {
+  async findById(id: string): Promise<User> {
     try {
       const repository = getRepository(User);
       const model: User = await repository.findOne(id);
@@ -43,7 +43,7 @@ export default new class UserRepository implements BaseRepository<User> {
     }
   }
 
-  async update(id: number, entity: User): Promise<User> {
+  async update(id: string, entity: User): Promise<User> {
     try {
       const repository = getRepository(User);
       const update: User = await repository.findOne(id);
@@ -57,7 +57,7 @@ export default new class UserRepository implements BaseRepository<User> {
     }
   }
 
-  async delete(id: number): Promise<User> {
+  async delete(id: string): Promise<User> {
     try {
       const repository = getRepository(User);
       const deleted: User = await repository.findOne(id);
