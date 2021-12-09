@@ -1,9 +1,11 @@
 import { BaseEntity } from '@Bases/BaseEntity';
 import {
-  Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, OneToOne, JoinColumn,
+  Column, Entity, PrimaryGeneratedColumn,
+  BeforeInsert, BeforeUpdate, OneToOne, JoinColumn, OneToMany,
 } from 'typeorm';
 import bcrypt from 'bcrypt';
 import { UserStats } from './UserStats';
+import Question from './Question';
 
 @Entity('users')
 export default class User extends BaseEntity {
@@ -22,9 +24,16 @@ export default class User extends BaseEntity {
     @Column('text')
       avatar: string;
 
-    @OneToOne(() => UserStats, (userStats) => userStats.user)
+    @OneToOne(() => UserStats, (userStats) => userStats.user, {
+      cascade: true,
+    })
     @JoinColumn()
       stats: UserStats;
+
+    @OneToMany(() => Question, (question) => question.user, {
+      cascade: true,
+    })
+      questions: Question[];
 
     @BeforeInsert()
     @BeforeUpdate()
