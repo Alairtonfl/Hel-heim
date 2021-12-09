@@ -1,6 +1,7 @@
 import { BaseController } from '@Bases/BaseController';
 import User from '@Entities/User';
 import UserRepository from '@Repository/UserRepository';
+import UserStatsRepository from '@Repository/UserStatsRepository';
 import { Request, Response } from 'express';
 
 export default new class UserController implements BaseController<User> {
@@ -34,6 +35,8 @@ export default new class UserController implements BaseController<User> {
       user.password = password;
       user.name = name;
       const result = await UserRepository.create(user);
+      const stats = await UserStatsRepository.create(result.id);
+      user.stats = stats;
       return res.send(result);
     } catch (e) {
       return res.send(e).status(400);

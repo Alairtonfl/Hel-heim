@@ -1,15 +1,16 @@
 import { BaseEntity } from '@Bases/BaseEntity';
 import {
-  Column, Entity, PrimaryGeneratedColumn,
+  Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn,
 } from 'typeorm';
+import User from './User';
 
 @Entity('user_stats')
 export class UserStats extends BaseEntity {
     @PrimaryGeneratedColumn('increment')
-      id: string;
+      id: number;
 
     @Column('int')
-      user_id: number;
+      userId: number;
 
     @Column('int')
       matchs: number;
@@ -25,4 +26,8 @@ export class UserStats extends BaseEntity {
 
     @Column('int')
       wins: number;
+
+    @OneToOne(() => User, (user) => user.stats)
+    @JoinColumn()
+      user : User;
 }

@@ -14,7 +14,7 @@ export class CreateStatsTable1638985392468 implements MigrationInterface {
           generationStrategy: 'increment',
         },
         {
-          name: 'user_id',
+          name: 'userId',
           type: 'int',
           isNullable: false,
         },
@@ -22,16 +22,19 @@ export class CreateStatsTable1638985392468 implements MigrationInterface {
           name: 'matchs',
           type: 'int',
           isNullable: false,
+          default: 0,
         },
         {
           name: 'answer_questions',
           type: 'int',
           isNullable: false,
+          default: 0,
         },
         {
           name: 'prizee',
           type: 'float',
           isNullable: false,
+          default: 0,
         },
         {
           name: 'defeats',
@@ -66,16 +69,18 @@ export class CreateStatsTable1638985392468 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'user_stats',
       new TableForeignKey({
-        columnNames: ['user_id'],
+        columnNames: ['userId'],
         referencedTableName: 'users',
         referencedColumnNames: ['id'],
-        onDelete: "CASCADE"
+        onDelete: 'CASCADE',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    //await queryRunner.dropForeignKey('user_stats', 'user_id');
+    const table = await queryRunner.getTable('user_stats');
+    const foreignKey = table.foreignKeys.find((fk) => fk.columnNames.indexOf('userId') !== -1);
+    await queryRunner.dropForeignKey('user_stats', foreignKey);
     await queryRunner.dropTable('user_stats');
   }
 }
