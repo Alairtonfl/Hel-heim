@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --files -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules src/index.ts",
-    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
+    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js --config ormconfig.json",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored"
   },
   "keywords": [],

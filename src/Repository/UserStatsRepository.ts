@@ -10,7 +10,7 @@ export default new class UserStatsRepository {
     try {
       const repository = getRepository(UserStats);
       const userStats = new UserStats();
-      userStats.id = id;
+      userStats.userId = id;
       const model = await repository.save(userStats);
       return model;
     } catch (e) {

@@ -1,10 +1,11 @@
 import { BaseEntity } from '@Bases/BaseEntity';
 import {
-  Column, ManyToOne, OneToMany, PrimaryGeneratedColumn,
+  Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn,
 } from 'typeorm';
 import Answer from './Answer';
 import User from './User';
 
+@Entity('question')
 export default class Question extends BaseEntity {
     @PrimaryGeneratedColumn('increment')
       id: number;

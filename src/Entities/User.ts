@@ -24,15 +24,10 @@ export default class User extends BaseEntity {
     @Column('text')
       avatar: string;
 
-    @OneToOne(() => UserStats, (userStats) => userStats.user, {
-      cascade: true,
-    })
-    @JoinColumn()
+    @OneToOne(() => UserStats, (stats) => stats.user)
       stats: UserStats;
 
-    @OneToMany(() => Question, (question) => question.user, {
-      cascade: true,
-    })
+    @OneToMany(() => Question, (question) => question.user)
       questions: Question[];
 
     @BeforeInsert()

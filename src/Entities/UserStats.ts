@@ -28,6 +28,6 @@ export class UserStats extends BaseEntity {
       wins: number;
 
     @OneToOne(() => User, (user) => user.stats)
-    @JoinColumn()
+    @JoinColumn({ name: 'userId' })
       user : User;
 }

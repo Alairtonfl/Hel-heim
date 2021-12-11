@@ -43,7 +43,7 @@ export class CreateQuestionTable1639067199756 implements MigrationInterface {
     }));
 
     await queryRunner.createForeignKey(
-      'user_stats',
+      'question',
       new TableForeignKey({
         columnNames: ['userId'],
         referencedTableName: 'users',
@@ -54,9 +54,9 @@ export class CreateQuestionTable1639067199756 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    const table = await queryRunner.getTable('question');
-    const foreignKey = table.foreignKeys.find((fk) => fk.columnNames.indexOf('userId') !== -1);
-    await queryRunner.dropForeignKey('question', foreignKey);
+    // const table = await queryRunner.getTable('question');
+    // const foreignKey = table.foreignKeys.find((fk) => fk.columnNames.indexOf('userId') !== -1);
+    // await queryRunner.dropForeignKey('question', foreignKey);
     await queryRunner.dropTable('question');
   }
 }

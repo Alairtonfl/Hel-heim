@@ -79,9 +79,9 @@ export class CreateStatsTable1638985392468 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    const table = await queryRunner.getTable('user_stats');
-    const foreignKey = table.foreignKeys.find((fk) => fk.columnNames.indexOf('userId') !== -1);
-    await queryRunner.dropForeignKey('user_stats', foreignKey);
+    // const table = await queryRunner.getTable('user_stats');
+    // const foreignKey = table.foreignKeys.find((fk) => fk.columnNames.indexOf('userId') !== -1);
+    // await queryRunner.dropForeignKey('user_stats', foreignKey);
     await queryRunner.dropTable('user_stats');
   }
 }
