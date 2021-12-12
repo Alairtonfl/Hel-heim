@@ -15,15 +15,12 @@ export default function authMiddleware(req: Request, res: Response, next: NextFu
   }
 
   const token = authorization.replace('Bearer', '').trim();
-
   try {
-    const data = jwt.verify(token, 'secretKey');
+    const data = jwt.verify(token, 'secretKEY');
     const { id } = data as TokenPayload;
-
     req.userId = id;
-
     return next();
-  } catch {
+  } catch (e) {
     return res.sendStatus(401);
   }
 }

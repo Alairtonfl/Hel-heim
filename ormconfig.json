@@ -7,16 +7,16 @@
     "database": "helheim",
     "logging": false,
     "entities": [
-        "src/Entities/*.ts"
+    "src/Entities/*.ts"
     ],
     "migrations": [
-        "dist/Database/Migration/*.js"
+    "src/Database/Migration/*.ts"
     ],
     "subscribers": [
-        "src/subscriber/*.ts"
+    "src/subscriber/*.ts"
     ],
     "cli": {
-        "migrationsDir": "src/Database/Migration",
-        "entitiesDir": "src/Entities"
+    "migrationsDir": "src/Database/Migration",
+    "entitiesDir": "src/Entities"
     }
 }

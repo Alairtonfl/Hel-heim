@@ -8,10 +8,13 @@ export default new class UserController implements BaseController<User> {
   async findById(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const user = await UserRepository.findById(id);
+      const user = await UserRepository.findById(+id);
       return res.send(user);
     } catch (e) {
-      return res.send(e).status(400);
+      return res.status(500).json({
+        status: 'error',
+        message: e.message,
+      });
     }
   }
 
@@ -20,7 +23,10 @@ export default new class UserController implements BaseController<User> {
       const users = await UserRepository.findAll();
       return res.send(users);
     } catch (e) {
-      return res.send(e).status(400);
+      return res.status(500).json({
+        status: 'error',
+        message: e.message,
+      });
     }
   }
 
@@ -30,16 +36,18 @@ export default new class UserController implements BaseController<User> {
         name, email, password, avatar,
       } = req.body;
       const user = new User();
-      user.avatar = avatar;
-      user.email = email;
-      user.password = password;
-      user.name = name;
+      Object.assign(user, {
+        name, email, password, avatar,
+      });
       const result = await UserRepository.create(user);
-      const stats = await UserStatsRepository.create(result.id);
+      const stats = await UserStatsRepository.create(result.id); // SUBSCRIBER
       user.stats = stats;
       return res.send(result);
     } catch (e) {
-      return res.send(e).status(400);
+      return res.status(500).json({
+        status: 'error',
+        message: e.message,
+      });
     }
   }
 
@@ -49,14 +57,16 @@ export default new class UserController implements BaseController<User> {
         name, email, password, avatar, id,
       } = req.body;
       const user = new User();
-      user.avatar = avatar;
-      user.email = email;
-      user.password = password;
-      user.name = name;
+      Object.assign(user, {
+        name, email, password, avatar,
+      });
       const result = await UserRepository.update(id, user);
       return res.send(result);
     } catch (e) {
-      return res.send(e).status(400);
+      return res.status(500).json({
+        status: 'error',
+        message: e.message,
+      });
     }
   }
 
@@ -68,7 +78,10 @@ export default new class UserController implements BaseController<User> {
       const result = await UserRepository.delete(id);
       return res.send(result);
     } catch (e) {
-      return res.send(e).status(400);
+      return res.status(500).json({
+        status: 'error',
+        message: e.message,
+      });
     }
   }
 }();

@@ -22,7 +22,11 @@ module.exports = {
           '@Services': './src/Services',
           '@Bases': './src/Bases'
         }
-      }]
+      }],
+      ["@babel/plugin-proposal-class-properties", {
+        loose: true
+      }],
+      ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
     ],
     ignore: [
       '**/*.spec.ts'
