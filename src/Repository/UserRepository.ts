@@ -6,14 +6,22 @@ import { getRepository } from 'typeorm';
 export default new class UserRepository implements BaseRepository<User> {
   async findById(id: number): Promise<User> {
     const repository = getRepository(User);
-    const model: User = await repository.findOne({ id }, { relations: ['stats', 'questions'] });
+    const model: User = await repository.findOne({
+      id,
+    }, {
+      relations: ['stats', 'questions'],
+    });
     return model;
   }
 
   async findByEmail(email: string): Promise<User> {
     try {
       const repository = getRepository(User);
-      const model: User = await repository.findOne({ where: { email } });
+      const model: User = await repository.findOne({
+        where: {
+          email,
+        },
+      });
       return model;
     } catch (e) {
       throw new Error(`Error: ${e}`);
@@ -22,7 +30,9 @@ export default new class UserRepository implements BaseRepository<User> {
 
   async findAll(): Promise<User[]> {
     const repository = getRepository(User);
-    const model = await repository.find({ relations: ['stats'] });
+    const model = await repository.find({
+      relations: ['stats'],
+    });
     return model;
   }
 

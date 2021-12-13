@@ -32,9 +32,7 @@ export default new class UserController implements BaseController<User> {
 
   async create(req: Request, res: Response) {
     try {
-      const {
-        name, email, password, avatar,
-      } = req.body;
+      const { name, email, password, avatar } = req.body;
       const user = new User();
       Object.assign(user, {
         name, email, password, avatar,
@@ -53,9 +51,7 @@ export default new class UserController implements BaseController<User> {
 
   async update(req: Request, res: Response) {
     try {
-      const {
-        name, email, password, avatar, id,
-      } = req.body;
+      const { name, email, password, avatar, id } = req.body;
       const user = new User();
       Object.assign(user, {
         name, email, password, avatar,
@@ -72,9 +68,7 @@ export default new class UserController implements BaseController<User> {
 
   async delete(req: Request, res: Response) {
     try {
-      const {
-        id,
-      } = req.body;
+      const { id } = req.body;
       const result = await UserRepository.delete(id);
       return res.send(result);
     } catch (e) {

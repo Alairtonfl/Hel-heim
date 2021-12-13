@@ -29,7 +29,13 @@
               "ts": "never",
               "tsx": "never"
             }
-         ]
+         ],
+         "object-curly-newline": ["error", {
+          "ObjectExpression": "always",
+          "ObjectPattern": { "multiline": true },
+          "ImportDeclaration": "never",
+          "ExportDeclaration": { "multiline": true, "minProperties": 5 }
+      }]
     },
     "settings": {
         "import/resolver": {
