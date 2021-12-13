@@ -1,13 +1,13 @@
 import User from '@User/Entity/User';
 import { getRepository } from 'typeorm';
 
-export default new class FindUserByIdRepository {
-  async run(id: number): Promise<User> {
+export default new class FindUserByEmailRepository {
+  async run(email: string): Promise<User> {
     const repository = getRepository(User);
     const model: User = await repository.findOne({
-      id,
-    }, {
-      relations: ['stats', 'questions'],
+      where: {
+        email,
+      },
     });
     return model;
   }

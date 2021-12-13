@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import UserRepository from '@Repository/UserRepository';
+import FindUserByEmailRepository from '@User/Repositories/FindUserByEmailRepository';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -7,7 +7,7 @@ export default new class AuthController {
   async authenticate(req: Request, res: Response) {
     const { email, password } = req.body;
 
-    const user = await UserRepository.findByEmail(email);
+    const user = await FindUserByEmailRepository.run(email);
 
     if (!user) {
       return res.sendStatus(401);
@@ -19,7 +19,11 @@ export default new class AuthController {
       return res.sendStatus(401);
     }
 
-    const token = jwt.sign({ id: user.id }, 'secretKEY', { expiresIn: '1d' });
+    const token = jwt.sign({
+      id: user.id,
+    }, 'secretKEY', {
+      expiresIn: '1d',
+    });
     delete user.password;
     return res.json({
       user,
