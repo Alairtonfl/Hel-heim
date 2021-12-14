@@ -2,7 +2,7 @@ import CreateUserStatsRepository from '@UserStats/Repositories/CreateUserStatsRe
 import User from '@User/Entity/User';
 import CreateUserRepository from '@User/Repositories/CreateUserRepository';
 
-interface UserRequest {
+interface IUserRequest {
     name: string;
     password: string;
     avatar: string;
@@ -10,7 +10,7 @@ interface UserRequest {
 }
 
 export default new class CreateUserService {
-  async execute({ name, email, password, avatar }: UserRequest): Promise<User | Error> {
+  async execute({ name, email, password, avatar }: IUserRequest): Promise<User | Error> {
     const user = new User();
     Object.assign(user, {
       name, email, password, avatar,

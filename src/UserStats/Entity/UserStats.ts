@@ -1,8 +1,6 @@
 import { BaseEntity } from '@Bases/BaseEntity';
-import {
-  Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn,
-} from 'typeorm';
-import User from '../../User/Entity/User';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import User from '@User/Entity/User';
 
 @Entity('user_stats')
 export default class UserStats extends BaseEntity {
@@ -28,6 +26,8 @@ export default class UserStats extends BaseEntity {
       wins: number;
 
     @OneToOne(() => User, (user) => user.stats)
-    @JoinColumn({ name: 'userId' })
+    @JoinColumn({
+      name: 'userId',
+    })
       user : User;
 }

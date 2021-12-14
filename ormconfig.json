@@ -7,7 +7,7 @@
     "database": "helheim",
     "logging": false,
     "entities": [
-    "src/Entities/*.ts"
+    "src/**/*.ts"
     ],
     "migrations": [
     "src/Database/Migration/*.ts"

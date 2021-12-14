@@ -17,6 +17,8 @@
     "rules": {
         "no-console": "off",
         "import/prefer-default-export": "off",
+        "no-empty-function": ["error", { "allow": ["constructors"] }],
+        "no-useless-constructor": 0,
         "class-methods-use-this": "off",
         "no-unused-vars": ["off"],
         "import/no-unresolved": "off",

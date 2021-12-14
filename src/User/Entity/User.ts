@@ -25,7 +25,6 @@ export default class User extends BaseEntity {
     @OneToOne(() => UserStats, (userStats) => userStats.user, {
       cascade: true,
     })
-    @JoinColumn()
       stats: UserStats;
 
     @OneToMany(() => Question, (question) => question.user, {
