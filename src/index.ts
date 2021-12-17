@@ -1,6 +1,5 @@
 import express from 'express';
 import userRoutes from '@User/Routes/UserRoutes';
-import routes from './Routes/Routes';
 import 'express-async-errors';
 import 'reflect-metadata';
 import './Database/connect';

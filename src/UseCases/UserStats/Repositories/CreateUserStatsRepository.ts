@@ -1,4 +1,4 @@
-import { UserStats } from '@Entities/UserStats';
+import UserStats from '@UserStats/Entity/UserStats';
 import { getRepository } from 'typeorm';
 
 export default new class CreateUserStatsRepository {
