@@ -17,8 +17,8 @@ export default class Question extends BaseEntity {
     @ManyToOne(() => User, (user) => user.questions)
       user: User;
 
-  @OneToMany(() => Answer, (answer) => answer.question, {
-    cascade: true,
-  })
-    answers: Answer[];
+    @OneToMany(() => Answer, (answer) => answer.question, {
+      cascade: true,
+    })
+      answers: Answer[];
 }
