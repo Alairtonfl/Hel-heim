@@ -1,10 +1,10 @@
 import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
-export class CreateMatchTable1640013654864 implements MigrationInterface {
+export class CreateMatchQuestionsTable1640013975969 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'match',
+            name: 'match_questions_question',
             columns: [
               {
                 name: 'id',
@@ -14,15 +14,14 @@ export class CreateMatchTable1640013654864 implements MigrationInterface {
                 generationStrategy: 'increment',
               },
               {
-                name: 'userId',
+                name: 'matchId',
                 type: 'int',
                 isNullable: false,
               },
               {
-                name: 'prizee',
-                type: 'float',
+                name: 'questionId',
+                type: 'int',
                 isNullable: false,
-                default: 0,
               },
               {
                 name: 'created_at',
@@ -43,10 +42,19 @@ export class CreateMatchTable1640013654864 implements MigrationInterface {
             ],
           }));
           await queryRunner.createForeignKey(
-            'match',
+            'match_questions_question',
             new TableForeignKey({
-              columnNames: ['userId'],
-              referencedTableName: 'users',
+              columnNames: ['matchId'],
+              referencedTableName: 'match',
+              referencedColumnNames: ['id'],
+              onDelete: 'CASCADE',
+            }),
+          );
+          await queryRunner.createForeignKey(
+            'match_questions_question',
+            new TableForeignKey({
+              columnNames: ['questionId'],
+              referencedTableName: 'question',
               referencedColumnNames: ['id'],
               onDelete: 'CASCADE',
             }),
@@ -54,7 +62,7 @@ export class CreateMatchTable1640013654864 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('match');
+        await queryRunner.dropTable('match_questions_question');
     }
 
 }
