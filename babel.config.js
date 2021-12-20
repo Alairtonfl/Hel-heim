@@ -16,14 +16,11 @@ module.exports = {
       }],
       ['module-resolver', {
         alias: {
-          '@User': './src/User',
-          '@UserStats': './src/UserStats',
-          '@Question': './src/Question',
-          '@Answer': './src/Answer',
-          '@controllers': './src/Controllers',
-          '@Entities': './src/Entities',
-          '@Repository': './src/Repository',
-          '@Services': './src/Services',
+          '@User': './src/UseCases/User',
+          '@UserStats': './src/UseCases/UserStats',
+          '@Question': './src/UseCases/Question',
+          '@Answer': './src/UseCases/Answer',
+          '@Match': './src/UseCases/Match',
           '@Bases': './src/Bases'
         }
       }],

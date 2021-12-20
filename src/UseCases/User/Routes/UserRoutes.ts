@@ -11,11 +11,11 @@ import FindUserByNameController from '@User/Controllers/FindUserByNameController
 const userRoutes = Router();
 
 userRoutes.post('/auth', AuthController.handle);
-userRoutes.get('/user', FindAllUsersController.handle);
-userRoutes.get('/user/:id', FindUserByIdController.handle);
+userRoutes.get('/users', FindAllUsersController.handle);
+userRoutes.get('/user', FindUserByIdController.handle);
 userRoutes.post('/user', CreateUserController.handle);
-userRoutes.put('/user/:id', UpdateUserController.handle);
-userRoutes.delete('/user/:id', DeleteUserController.handle);
+userRoutes.put('/user', UpdateUserController.handle);
+userRoutes.delete('/user', DeleteUserController.handle);
 userRoutes.get('user/:name', authMiddleware, FindUserByNameController.handle);
 
 export default userRoutes;

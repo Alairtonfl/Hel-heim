@@ -11,7 +11,7 @@ export default class Match extends BaseEntity{
     @Column('float')
     prizee: number
 
-    @ManyToOne(() => User, (user) => user.questions)
+    @ManyToOne(() => User, (user) => user.matchs)
       user: User;
     
     @ManyToMany(() => Question, {

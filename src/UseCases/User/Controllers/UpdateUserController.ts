@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 export default new class UpdateUserController {
   async handle(req: Request, res: Response) {
     const { name, email, password, avatar } = req.body;
-    const id: number = +req.params;
+    const id = req.userId;
 
     const result = UpdateUserService.execute({
       name, email, password, avatar, id,
