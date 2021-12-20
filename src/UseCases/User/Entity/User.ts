@@ -37,4 +37,10 @@ export default class User extends BaseEntity {
     hashPassword() {
       this.password = bcrypt.hashSync(this.password, 10);
     }
+
+    @BeforeInsert()
+    @BeforeUpdate()
+    trimUsername() {
+      this.name = this.name.trim().replace(' ', '');
+    }
 }

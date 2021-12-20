@@ -20,6 +20,7 @@
         "no-empty-function": ["error", { "allow": ["constructors"] }],
         "no-useless-constructor": 0,
         "class-methods-use-this": "off",
+        "disallowRedundantWrapping": false,
         "no-unused-vars": ["off"],
         "import/no-unresolved": "off",
          "import/extensions": [

@@ -1,6 +1,7 @@
 import CreateUserStatsRepository from '@UserStats/Repositories/CreateUserStatsRepository';
 import User from '@User/Entity/User';
 import CreateUserRepository from '@User/Repositories/CreateUserRepository';
+import CreateUserValidation from '@User/Validations/CreateUserValidation';
 
 interface IUserRequest {
     name: string;
@@ -15,6 +16,10 @@ export default new class CreateUserService {
     Object.assign(user, {
       name, email, password, avatar,
     });
+    
+    const validate = CreateUserValidation.validate(user);
+    if(validate instanceof Error) { return validate; }
+
     const model = await CreateUserRepository.run(user);
     const stats = await CreateUserStatsRepository.run(model.id);
     model.stats = stats;
