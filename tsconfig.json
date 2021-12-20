@@ -30,13 +30,10 @@
     "baseUrl": "./",                                   
     "paths": {
       "@User/*": ["./src/UseCases/User/*"],
+      "@Match/*": ["./src/UseCases/Match/*"],
       "@UserStats/*": ["./src/UseCases/UserStats/*"],
       "@Question/*": ["./src/UseCases/Question/*"],
       "@Answer/*": ["./src/UseCases/Answer/*"],
-      "@controllers/*": ["./src/Controllers/*"],
-      "@Entities/*": ["./src/Entities/*"],
-      "@Repository/*": ["./src/Repository/*"],
-      "@Services/*": ["./src/Services/*"],
       "@Bases/*": ["src/Bases/*"]
     },                       
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */

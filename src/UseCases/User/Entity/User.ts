@@ -4,6 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn,
 import bcrypt from 'bcrypt';
 import UserStats from '@UserStats/Entity/UserStats';
 import Question from '@Question/Entity/Question';
+import Match from '@Match/Entity/Match';
 
 @Entity('users')
 export default class User extends BaseEntity {
@@ -31,6 +32,11 @@ export default class User extends BaseEntity {
       cascade: true,
     })
       questions: Question[];
+
+    @OneToMany(() => Match, (match) => match.user, {
+      cascade: true,
+    })
+      matchs: Match[];
 
     @BeforeInsert()
     @BeforeUpdate()
