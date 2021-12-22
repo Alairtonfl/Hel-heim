@@ -17,7 +17,7 @@ Helheim uses a number of open source projects to work properly:
 
 # Documentation
 ### Database Model
-![Database Model](./Documentation/DatabaseModel.png "Database Model").
+![Database Model](./Documentation/DatabaseModel.png "Database Model")
 
-### Database Model
+### Flow Helheim
 ![UseCases](./Documentation/FlowHelheim.png "Flow start match").
