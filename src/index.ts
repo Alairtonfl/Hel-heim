@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import userRoutes from '@User/Routes/UserRoutes';
 import questionRoutes from '@Question/Routes/QuestionRoutes';
@@ -8,7 +9,6 @@ import './Database/connect';
 const app = express();
 
 app.use(express.json());
-// app.use(routes);
 app.use(userRoutes);
 app.use(questionRoutes);
 

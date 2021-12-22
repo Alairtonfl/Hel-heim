@@ -1,8 +1,8 @@
 import CreateQuestionController from '@Question/Controllers/CreateQuestionController';
 import FindAllQuestionsController from '@Question/Controllers/FindAllQuestionsController';
 import FindQuestionsByUserIdController from '@Question/Controllers/FindQuestionsByUserIdController';
+import authMiddleware from '@Src/Middlewares/AuthMiddleware';
 import { Router } from 'express';
-import authMiddleware from 'src/Middlewares/AuthMiddleware';
 
 const questionRoutes = Router();
 

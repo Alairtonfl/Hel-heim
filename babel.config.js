@@ -21,7 +21,8 @@ module.exports = {
           '@Question': './src/UseCases/Question',
           '@Answer': './src/UseCases/Answer',
           '@Match': './src/UseCases/Match',
-          '@Bases': './src/Bases'
+          '@Bases': './src/Bases',
+          '@Src': './src'
         }
       }],
       ["@babel/plugin-proposal-class-properties", {

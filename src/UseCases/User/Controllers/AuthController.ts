@@ -21,7 +21,7 @@ export default new class AuthController {
 
     const token = jwt.sign({
       id: user.id,
-    }, 'secretKEY', {
+    }, process.env.SECRET_KEY , {
       expiresIn: '1d',
     });
     delete user.password;
