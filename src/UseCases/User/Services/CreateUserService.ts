@@ -16,6 +16,8 @@ export default new class CreateUserService {
     Object.assign(user, {
       name, email, password, avatar,
     });
+
+    
     
     const validate = UserValidation.validate(user);
     if(validate instanceof Error) { return validate; }

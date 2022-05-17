@@ -8,6 +8,7 @@ export default new class FindUserByEmailRepository {
       where: {
         email,
       },
+      relations: ['stats'],
     });
     return model;
   }

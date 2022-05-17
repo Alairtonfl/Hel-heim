@@ -13,9 +13,9 @@ const userRoutes = Router();
 userRoutes.post('/auth', AuthController.handle);
 userRoutes.get('/users', authMiddleware, FindAllUsersController.handle);
 userRoutes.get('/user', authMiddleware, FindUserByIdController.handle);
-userRoutes.post('/user', authMiddleware, CreateUserController.handle);
+userRoutes.post('/user', CreateUserController.handle);
 userRoutes.put('/user', authMiddleware, UpdateUserController.handle);
 userRoutes.delete('/user', authMiddleware, DeleteUserController.handle);
-userRoutes.get('user/:name', authMiddleware, FindUserByNameController.handle);
+userRoutes.get('/user/:name', authMiddleware, FindUserByNameController.handle);
 
 export default userRoutes;
