@@ -5,20 +5,26 @@ import User from '@User/Entity/User';
 
 @Entity('question')
 export default class Question extends BaseEntity {
-    @PrimaryGeneratedColumn('increment')
-      id: number;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
-    @Column('text')
-      question: string;
+  @Column('text')
+  question: string;
 
-    @Column('int')
-      userId: number;
+  @Column('text')
+  theme: string;
 
-    @ManyToOne(() => User, (user) => user.questions)
-      user: User;
+  @Column('int')
+  dificulty: number;
 
-    @OneToMany(() => Answer, (answer) => answer.question, {
-      cascade: true,
-    })
-      answers: Answer[];
+  @Column('int')
+  userId: number;
+
+  @ManyToOne(() => User, (user) => user.questions)
+  user: User;
+
+  @OneToMany(() => Answer, (answer) => answer.question, {
+    cascade: true,
+  })
+  answers: Answer[];
 }
