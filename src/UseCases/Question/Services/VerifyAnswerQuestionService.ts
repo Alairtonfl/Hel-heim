@@ -5,11 +5,12 @@ import FindNextQuestionRepository from '@Question/Repositories/FindNextQuestionR
 export default new class FindQuestionsByUserIdService {
   async execute(questionId: number, answerId: number): Promise<Question | Error> {
     const answer = await FindAnswerByIdRepository.run(answerId); 
-    let question;
+    let question = null;
     if(answer.correct){
         const questions = await FindNextQuestionRepository.run();
         question = questions[Math.floor(Math.random() * questions.length)]
     }
+
     return question
   }
 }();

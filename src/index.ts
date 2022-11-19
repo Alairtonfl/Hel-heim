@@ -7,6 +7,7 @@ import 'reflect-metadata';
 import './Database/connect';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import userStatsRoutes from '@UserStats/Routes/UserStatsRoutes';
 
 const app = express();
 
@@ -23,4 +24,5 @@ app.listen(3333, () => {
 
 app.use(userRoutes);
 app.use(questionRoutes);
+app.use(userStatsRoutes)
 
